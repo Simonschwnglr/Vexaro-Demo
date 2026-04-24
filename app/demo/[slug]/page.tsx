@@ -67,7 +67,7 @@ export default async function DemoPage({ params }: PageProps) {
     notFound();
   }
 
-  const isBlueprint = demo.farbe === '#00d4ff';
+  const isBlueprint = demo.farbe === '#00d4ff' || demo.farbe === '#22c55e';
 
   if (isBlueprint) {
     return (
@@ -95,10 +95,10 @@ export default async function DemoPage({ params }: PageProps) {
         }} />
 
         {/* Blueprint Corner Marks */}
-        <div style={{ position: 'fixed', top: 20, left: 20, color: '#00d4ff', fontSize: 10, opacity: 0.4, fontFamily: '"Space Mono", monospace' }}>A1</div>
-        <div style={{ position: 'fixed', top: 20, right: 20, color: '#00d4ff', fontSize: 10, opacity: 0.4, fontFamily: '"Space Mono", monospace' }}>B1</div>
-        <div style={{ position: 'fixed', bottom: 20, left: 20, color: '#00d4ff', fontSize: 10, opacity: 0.4, fontFamily: '"Space Mono", monospace' }}>A2</div>
-        <div style={{ position: 'fixed', bottom: 20, right: 20, color: '#00d4ff', fontSize: 10, opacity: 0.4, fontFamily: '"Space Mono", monospace' }}>B2</div>
+        <div style={{ position: 'fixed', top: 20, left: 20, color: demo.farbe, fontSize: 10, opacity: 0.4, fontFamily: '"Space Mono", monospace' }}>A1</div>
+        <div style={{ position: 'fixed', top: 20, right: 20, color: demo.farbe, fontSize: 10, opacity: 0.4, fontFamily: '"Space Mono", monospace' }}>B1</div>
+        <div style={{ position: 'fixed', bottom: 20, left: 20, color: demo.farbe, fontSize: 10, opacity: 0.4, fontFamily: '"Space Mono", monospace' }}>A2</div>
+        <div style={{ position: 'fixed', bottom: 20, right: 20, color: demo.farbe, fontSize: 10, opacity: 0.4, fontFamily: '"Space Mono", monospace' }}>B2</div>
 
         {/* Header */}
         <header style={{
@@ -121,7 +121,7 @@ export default async function DemoPage({ params }: PageProps) {
             <div style={{ flex: 1 }}>
               <div style={{ fontSize: 10, color: demo.farbe, marginBottom: 8, letterSpacing: 2 }}>TECHNISCHE SPEZIFIKATION // UNTERNEHMENSPROFIL</div>
               <h1 style={{ fontSize: 36, fontWeight: 700, marginBottom: 8, color: '#fff' }}>{demo.name}</h1>
-              <p style={{ color: '#00d4ff', fontSize: 14 }}>{demo.beschreibung}</p>
+              <p style={{ color: demo.farbe, fontSize: 14 }}>{demo.beschreibung}</p>
             </div>
           </div>
 
@@ -134,26 +134,24 @@ export default async function DemoPage({ params }: PageProps) {
             paddingTop: 30,
             borderTop: '1px solid rgba(0,212,255,0.2)'
           }}>
-            {demo.anschrift && (
-              <div>
-                <div style={{ fontSize: 9, color: '#00d4ff', marginBottom: 4, letterSpacing: 1 }}>STANDORT</div>
-                <div style={{ fontSize: 13 }}>{demo.anschrift}</div>
-              </div>
-            )}
+            <div>
+              <div style={{ fontSize: 9, color: demo.farbe, marginBottom: 4, letterSpacing: 1 }}>STANDORT</div>
+              <div style={{ fontSize: 13 }}>{demo.anschrift}</div>
+            </div>
             {demo.telefon && (
               <div>
-                <div style={{ fontSize: 9, color: '#00d4ff', marginBottom: 4, letterSpacing: 1 }}>TELEFON</div>
+                <div style={{ fontSize: 9, color: demo.farbe, marginBottom: 4, letterSpacing: 1 }}>TELEFON</div>
                 <div style={{ fontSize: 13 }}>{demo.telefon}</div>
               </div>
             )}
             {demo.email && (
               <div>
-                <div style={{ fontSize: 9, color: '#00d4ff', marginBottom: 4, letterSpacing: 1 }}>E-MAIL</div>
+                <div style={{ fontSize: 9, color: demo.farbe, marginBottom: 4, letterSpacing: 1 }}>E-MAIL</div>
                 <div style={{ fontSize: 13 }}>{demo.email}</div>
               </div>
             )}
             <div>
-              <div style={{ fontSize: 9, color: '#00d4ff', marginBottom: 4, letterSpacing: 1 }}>STATUS</div>
+              <div style={{ fontSize: 9, color: demo.farbe, marginBottom: 4, letterSpacing: 1 }}>STATUS</div>
               <div style={{ fontSize: 13, color: '#00ff88' }}>OPERATIV</div>
             </div>
           </div>
