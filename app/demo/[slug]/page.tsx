@@ -39,6 +39,20 @@ const DEMOS: Record<string, {
     usps: ['Photovoltaik', 'E-Mobilitaet', 'Smart Home'],
     farbe: '#D97706'
   },
+  'elektro-harak': {
+    name: 'Elektro-Harak GmbH', branche: 'Elektrotechnik',
+    anschrift: 'Reutlinger Str. 129, 70597 Stuttgart-Degerloch', telefon: '0711 7 65 32 07', email: 'info@elektro-harak.de',
+    beschreibung: 'Ihr Fachbetrieb fuer Elektroinstallation, Photovoltaik und Altbausanierung in Stuttgart-Degerloch',
+    usps: ['Elektroinstallation', 'Photovoltaik & Solaranlagen', 'E-Check', 'Netzwerktechnik', 'Sat-Anlagen', 'Altbausanierung'],
+    farbe: '#00d4ff'
+  },
+  'elektro-heinze': {
+    name: 'Elektro & System-Technik Heinze', branche: 'Elektrotechnik / Systemtechnik',
+    anschrift: 'Lindenring 87, 04824 Beucha', telefon: '034292 51 91 62', email: '',
+    beschreibung: 'Ihr Fachbetrieb fuer Elektroinstallationen und Systemtechnik in Beucha bei Leipzig. Praezise. Zuverlaessig. Qualifiziert.',
+    usps: ['Elektroinstallationen', 'Systemtechnik', 'Wartung & Pruefung', 'Sicherheitstechnik', 'Industrieelektrik', 'E-Check / Pruefberichte'],
+    farbe: '#22c55e'
+  },
   'smart-home-macher': {
     name: 'SmartHome-Macher', branche: 'Smart Home & Elektroinstallation',
     anschrift: 'Meisterstraße 12, 70173 Stuttgart-Mitte', telefon: '+49 711 123 45 67', email: 'info@smart-home-macher.de',
