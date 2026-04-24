@@ -1,34 +1,34 @@
 import { notFound } from 'next/navigation';
-import fs from 'fs';
-import path from 'path';
 
-interface DemoData {
-  [key: string]: {
-    name: string;
-    branche: string;
-    anschrift?: string;
-    telefon?: string;
-    oeffnungszeiten?: string;
-    beschreibung: string;
-    usps: string[];
-    farbe: string;
-    demo_type: string;
-  };
-}
-
-function getDemoData(slug: string): DemoData[string] | null {
-  try {
-    const filePath = path.join(process.cwd(), 'data', 'demos.json');
-    const json = fs.readFileSync(filePath, 'utf8');
-    const data: DemoData = JSON.parse(json);
-    return data[slug] || null;
-  } catch {
-    return null;
+// Inline demo data — kein externes File nötig für Vercel
+const DEMOS: Record<string, {
+  name: string; branche: string; anschrift?: string; telefon?: string;
+  oeffnungszeiten?: string; beschreibung: string; usps: string[]; farbe: string;
+}> = {
+  'demo-elektriker-mueller': {
+    name: 'Elektriker Müller', branche: 'Elektriker',
+    anschrift: 'Industriestraße 5, 10245 Berlin', telefon: '030 98765432',
+    beschreibung: 'Ihr zuverlässiger Partner für Elektroinstallation, Smart Home und Reparaturen in Berlin',
+    usps: ['24/7 Notdienst', 'Festpreise', 'Meisterbetrieb'],
+    farbe: '#1E40AF'
+  },
+  'demo-cafe-rosenthal': {
+    name: 'Café Rosenthal', branche: 'Café',
+    anschrift: 'Marktplatz 12, 80331 München', telefon: '089 12345678',
+    oeffnungszeiten: 'Mo-Fr 7-18 Uhr, Sa 8-16 Uhr',
+    beschreibung: 'Gemütliches Café im Herzen Münchens mit hausgemachten Kuchen und Spezialitätenkaffee',
+    usps: ['Frische Kuchen täglich', 'WLAN kostenlos', 'Sitzplätze innen & außen'],
+    farbe: '#8B4513'
   }
+};
+
+interface PageProps {
+  params: Promise<{ slug: string }>;
 }
 
-export default function DemoPage({ params }: { params: { slug: string } }) {
-  const demo = getDemoData(params.slug);
+export default async function DemoPage({ params }: PageProps) {
+  const { slug } = await params;
+  const demo = DEMOS[slug];
 
   if (!demo) {
     notFound();
