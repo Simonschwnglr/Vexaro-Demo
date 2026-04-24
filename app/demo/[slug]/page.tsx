@@ -1,24 +1,43 @@
 import { notFound } from 'next/navigation';
 
-// Inline demo data — kein externes File nötig für Vercel
 const DEMOS: Record<string, {
   name: string; branche: string; anschrift?: string; telefon?: string;
-  oeffnungszeiten?: string; beschreibung: string; usps: string[]; farbe: string;
+  beschreibung: string; usps: string[]; farbe: string;
 }> = {
   'demo-elektriker-mueller': {
-    name: 'Elektriker Müller', branche: 'Elektriker',
-    anschrift: 'Industriestraße 5, 10245 Berlin', telefon: '030 98765432',
-    beschreibung: 'Ihr zuverlässiger Partner für Elektroinstallation, Smart Home und Reparaturen in Berlin',
+    name: 'Elektriker Mueller', branche: 'Elektriker',
+    anschrift: 'Berlin', telefon: '',
+    beschreibung: 'Ihr zuverlaessiger Partner fuer Elektroinstallation, Smart Home und Reparaturen',
     usps: ['24/7 Notdienst', 'Festpreise', 'Meisterbetrieb'],
     farbe: '#1E40AF'
   },
   'demo-cafe-rosenthal': {
-    name: 'Café Rosenthal', branche: 'Café',
-    anschrift: 'Marktplatz 12, 80331 München', telefon: '089 12345678',
-    oeffnungszeiten: 'Mo-Fr 7-18 Uhr, Sa 8-16 Uhr',
-    beschreibung: 'Gemütliches Café im Herzen Münchens mit hausgemachten Kuchen und Spezialitätenkaffee',
-    usps: ['Frische Kuchen täglich', 'WLAN kostenlos', 'Sitzplätze innen & außen'],
+    name: 'Cafe Rosenthal', branche: 'Cafe',
+    anschrift: 'Muenchen', telefon: '',
+    beschreibung: 'Gemuetliches Cafe im Herzen Muenchens mit hausgemachten Kuchen',
+    usps: ['Frische Kuchen taeglich', 'WLAN kostenlos', 'Sitzplaetze innen & aussen'],
     farbe: '#8B4513'
+  },
+  'demo-fija-elektro': {
+    name: 'FIJA Elektro', branche: 'Elektrotechnik',
+    anschrift: '', telefon: '',
+    beschreibung: 'Professionelle Elektroinstallationen fuer Privat und Gewerbe',
+    usps: ['Meisterbetrieb', 'Faire Preise', 'Zuverlaessig'],
+    farbe: '#059669'
+  },
+  'demo-sobrus-systeme': {
+    name: 'Sobrus Systeme', branche: 'IT & Elektrotechnik',
+    anschrift: '', telefon: '',
+    beschreibung: 'Moderne Elektro- und IT-Loesungen fuer Unternehmen',
+    usps: ['IT-Systeme', 'Netzwerktechnik', 'Elektroinstallation'],
+    farbe: '#7C3AED'
+  },
+  'demo-alpha-energy': {
+    name: 'Alpha Energy GmbH', branche: 'Energietechnik',
+    anschrift: '', telefon: '',
+    beschreibung: 'Ihr Spezialist fuer nachhaltige Energieloesungen und Elektrotechnik',
+    usps: ['Photovoltaik', 'E-Mobilitaet', 'Smart Home'],
+    farbe: '#D97706'
   }
 };
 
@@ -41,7 +60,6 @@ export default async function DemoPage({ params }: PageProps) {
       color: '#fff',
       fontFamily: 'system-ui, sans-serif'
     }}>
-      {/* Header */}
       <header style={{
         padding: '40px 20px',
         textAlign: 'center',
@@ -65,7 +83,6 @@ export default async function DemoPage({ params }: PageProps) {
         <p style={{ color: '#a0a0b0', fontSize: 18 }}>{demo.beschreibung}</p>
       </header>
 
-      {/* USP Section */}
       <section style={{ padding: '60px 20px', maxWidth: 900, margin: '0 auto' }}>
         <h2 style={{ fontSize: 14, textTransform: 'uppercase', letterSpacing: 2, color: demo.farbe, marginBottom: 30 }}>
           Das bieten wir
@@ -80,7 +97,7 @@ export default async function DemoPage({ params }: PageProps) {
               background: 'rgba(255,255,255,0.05)',
               borderRadius: 16,
               padding: 30,
-              border: `1px solid rgba(255,255,255,0.1)`,
+              border: '1px solid rgba(255,255,255,0.1)',
               display: 'flex',
               alignItems: 'flex-start',
               gap: 16
@@ -96,7 +113,7 @@ export default async function DemoPage({ params }: PageProps) {
                 fontSize: 18,
                 flexShrink: 0
               }}>
-                ✓
+                &#10003;
               </div>
               <span style={{ fontSize: 16, fontWeight: 500 }}>{usp}</span>
             </div>
@@ -104,7 +121,6 @@ export default async function DemoPage({ params }: PageProps) {
         </div>
       </section>
 
-      {/* CTA Section */}
       <section style={{
         padding: '80px 20px',
         textAlign: 'center',
@@ -130,7 +146,6 @@ export default async function DemoPage({ params }: PageProps) {
         </a>
       </section>
 
-      {/* Footer */}
       <footer style={{
         padding: '40px 20px',
         textAlign: 'center',
