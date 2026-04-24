@@ -40,7 +40,7 @@ const DEMOS: Record<string, {
     farbe: '#D97706'
   },
   'smart-home-macher': {
-    name: 'SmartHome-Macher', contact: 'Simon Himmler', branche: 'Smart Home & Elektroinstallation',
+    name: 'SmartHome-Macher', branche: 'Smart Home & Elektroinstallation',
     anschrift: 'Meisterstraße 12, 70173 Stuttgart-Mitte', telefon: '+49 711 123 45 67', email: 'info@smart-home-macher.de',
     beschreibung: 'Intelligente Elektroinstallation fuer das moderne Zuhause. Wir planen, installieren und vernetzen — von KNX-Systemen ueber PV-Anlagen bis zur E-Mobilitaet.',
     usps: ['KNX-Bussysteme', 'Smart Home Integration', 'PV-Anlagen & Speicher', 'E-Mobilitaet & Wallboxen', 'Energieberatung', 'Wartung & Service'],
