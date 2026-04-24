@@ -283,8 +283,7 @@ function Testimonials() {
           <div className="sectionTag">Kundenstimmen</div>
           <h2 className="sectionTitle">Was unsere Kunden sagen</h2>
           <p className="sectionSubtitle">
-            Über 300 erfolgreich abgeschlossene Projekte — lesen Sie, warum
-            Unternehmen und Privatkunden auf Sobrus Systeme vertrauen.
+            Demo-Webseite — Kundenstimmen sind illustrativ / beispielhaft.
           </p>
         </div>
         <div className="testimonialsGrid">

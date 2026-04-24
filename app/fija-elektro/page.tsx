@@ -280,8 +280,7 @@ function Testimonials() {
           <div className="sectionTag">Kundenstimmen</div>
           <h2 className="sectionTitle">Was unsere Kunden sagen</h2>
           <p className="sectionSubtitle">
-            Über 500 zufriedene Kunden sprechen für sich. Lesen Sie, was
-            Privat- und Geschäftskunden über ihre Erfahrungen berichten.
+            Demo-Webseite — Kundenstimmen sind illustrativ / beispielhaft.
           </p>
         </div>
         <div className="testimonialsGrid">
