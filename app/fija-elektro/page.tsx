@@ -25,14 +25,8 @@ function Navbar() {
           <li><a href="#kontakt" className="navCta">Angebot anfragen</a></li>
         </ul>
 
-        <button
-          className="navToggle"
-          onClick={() => setOpen(!open)}
-          aria-label="Menü öffnen"
-        >
-          <span />
-          <span />
-          <span />
+        <button className="navToggle" onClick={() => setOpen(!open)} aria-label="Menü">
+          <span /><span /><span />
         </button>
       </div>
     </nav>
@@ -40,62 +34,46 @@ function Navbar() {
 }
 
 // ── Hero ─────────────────────────────────────────────────────────────────────
+const ACCENT = '#3b82f6'
+
 function Hero() {
   return (
-    <section className="hero">
-      <div className="heroGlow" />
+    <section className="hero" style={{ '--page-accent': ACCENT } as React.CSSProperties}>
+      <div className="heroBg" />
       <div className="heroInner">
-        <div>
-          <div className="heroBadge">
-            <span className="heroBadgeDot" />
-            24/7 Notdienst verfügbar
-          </div>
+        <div className="heroContent">
+          <div className="heroBadge">24/7 Notdienst verfügbar</div>
           <h1 className="heroTitle">
             Elektrotechnik,<br />
-            der Sie <em>vertrauen</em><br />
+            die Sie <em>vertrauen</em><br />
             können.
           </h1>
           <p className="heroSubtitle">
-            FIJA Elektro steht für präzise Handwerkskunst, modernste Technik
-            und zuverlässigen Service — von der einfachen Installation bis zum
-            intelligenten Smart-Home-System.
+            Seit über 15 Jahren stehen wir für Handwerk, das hält — und für
+            Beratung, die ehrlich ist. Von der Sicherung bis zum Smart Home.
           </p>
           <div className="heroCtas">
-            <a href="#kontakt" className="btnPrimary">
-              Kostenloses Angebot →
-            </a>
-            <a href="#leistungen" className="btnSecondary">
-              Unsere Leistungen
-            </a>
+            <a href="#kontakt" className="btnPrimary">Kostenloses Angebot →</a>
+            <a href="#leistungen" className="btnSecondary">Mehr erfahren</a>
           </div>
         </div>
-
         <div className="heroVisual">
-          <div className="heroCard">
-            <div className="heroCardGlow" />
-            <div className="heroCardIcon">⚡</div>
-            <div className="heroCardTitle">Ihr Elektrofachbetrieb</div>
-            <div className="heroCardSubtitle">
-              Zertifiziert, versichert und seit über 15 Jahren Ihr Partner
-              für alle elektrischen Anlagen.
+          <div className="heroStats">
+            <div className="heroStat">
+              <span className="heroStatNum">15+</span>
+              <span className="heroStatLabel">Jahre Erfahrung</span>
             </div>
-            <div className="heroStats">
-              <div className="heroStat">
-                <span className="heroStatNum">15+</span>
-                <span className="heroStatLabel">Jahre Erfahrung</span>
-              </div>
-              <div className="heroStat">
-                <span className="heroStatNum">500+</span>
-                <span className="heroStatLabel">Projekte</span>
-              </div>
-              <div className="heroStat">
-                <span className="heroStatNum">24/7</span>
-                <span className="heroStatLabel">Notdienst</span>
-              </div>
-              <div className="heroStat">
-                <span className="heroStatNum">100%</span>
-                <span className="heroStatLabel">Zufriedenheit</span>
-              </div>
+            <div className="heroStat">
+              <span className="heroStatNum">500+</span>
+              <span className="heroStatLabel">Projekte abgeschlossen</span>
+            </div>
+            <div className="heroStat">
+              <span className="heroStatNum">24/7</span>
+              <span className="heroStatLabel">Notdienst-Bereitschaft</span>
+            </div>
+            <div className="heroStat">
+              <span className="heroStatNum">98%</span>
+              <span className="heroStatLabel">Kundenzufriedenheit</span>
             </div>
           </div>
         </div>
@@ -104,52 +82,28 @@ function Hero() {
   )
 }
 
-// ── Services ─────────────────────────────────────────────────────────────────
+// ── Services ──────────────────────────────────────────────────────────────────
 const services = [
   {
-    icon: '🔌',
     title: 'Elektroinstallation',
-    desc: 'Von der Neuinstallation bis zur vollständigen Renovierung elektrischer Anlagen — wir planen, installieren und prüfen nach den neuesten VDE-Normen.',
-    features: [
-      'Neu- und Erweiterungsinstallationen',
-      'Unterverteilungen & Zählerschränke',
-      'Leitungsverlegung & Kabeltrassen',
-      'Prüfung nach DGUV V3',
-    ],
+    desc: 'Komplette Elektroinstallationen für Wohn- und Gewerbegebäude. Von der Planung bis zur Abnahme — alles aus einer Hand.',
+    features: ['Neubau & Sanierung', 'Zählerschränke', 'Verkabelung', 'Beleuchtungskonzepte']
   },
   {
-    icon: '🛡️',
     title: 'Sicherheitstechnik',
-    desc: 'Schützen Sie Ihr Eigentum und Ihre Familie mit modernster Sicherheitstechnik. Wir planen und installieren maßgeschneiderte Lösungen für Privat und Gewerbe.',
-    features: [
-      'Einbruchmeldeanlagen (EMA)',
-      'Videoüberwachungssysteme (CCTV)',
-      'Brandmelde- und Rauchmeldeanlagen',
-      'Zutrittskontrollsysteme',
-    ],
+    desc: 'Einbruchschutz und Rauchmelder — für Ihre Sicherheit und die Ihrer Familie. Zertifizierte Fachkraft.',
+    features: ['Rauchmelder nach Landesrecht', 'Alarmanlagen', 'Videoüberwachung', 'Zutrittskontrolle']
   },
   {
-    icon: '🚨',
-    title: 'Elektro-Notdienst',
-    desc: 'Stromausfall, Kurzschluss oder defekte Absicherung — unser Notdienst ist 365 Tage im Jahr rund um die Uhr für Sie erreichbar und schnell vor Ort.',
-    features: [
-      '24 Stunden, 7 Tage die Woche',
-      'Reaktionszeit unter 60 Minuten',
-      'Privatpersonen & Unternehmen',
-      'Festpreisgarantie für Notfalleinsätze',
-    ],
-  },
-  {
-    icon: '🏠',
     title: 'Smart Home',
-    desc: 'Erleben Sie ein Zuhause, das mitdenkt. Wir integrieren KNX, Loxone und andere Systeme für automatisierte Beleuchtung, Heizung, Sicherheit und mehr.',
-    features: [
-      'KNX & Loxone Systeme',
-      'Automatisierte Lichtsteuerung',
-      'Rollladen- & Klimasteuerung',
-      'App-Steuerung & Sprachassistenten',
-    ],
+    desc: 'Intelligente Gebäudeautomation, die Ihr Leben leichter macht — ohne Science-Fiction, aber mit echtem Mehrwert.',
+    features: ['KNX-Systeme', 'Beleuchtungssteuerung', 'Heizungsintegration', 'Sprachsteuerung']
   },
+  {
+    title: 'Elektro-Notdienst',
+    desc: 'Wenn der Strom weg ist, sind wir schnell da. Rund um die Uhr, 365 Tage im Jahr — direkt vor Ort.',
+    features: ['Stromausfall-Notdienst', 'Kurzschluss-Behebung', 'Sicherungstausch', 'Sofort-Volldiagnose']
+  }
 ]
 
 function Services() {
@@ -157,23 +111,21 @@ function Services() {
     <section className="section servicesSection" id="leistungen">
       <div className="container">
         <div className="servicesHeader">
-          <div className="sectionTag">Leistungen</div>
-          <h2 className="sectionTitle">Was wir für Sie tun</h2>
+          <div className="sectionLabel">Leistungen</div>
+          <h2 className="sectionTitle">Was wir für Sie tun.</h2>
           <p className="sectionSubtitle">
-            Als Elektrofachbetrieb bieten wir Ihnen das komplette Spektrum
-            moderner Elektrotechnik — zuverlässig, sauber und termingerecht.
+            Vier Bereiche, in denen wir zu Hause sind. Keine Auftragsverwaltung —
+            echte Beratung und saubere Ausführung.
           </p>
         </div>
         <div className="servicesGrid">
-          {services.map((s) => (
-            <div key={s.title} className="serviceCard">
-              <div className="serviceIcon">{s.icon}</div>
+          {services.map((s, i) => (
+            <div key={i} className="serviceCard">
+              <div className="serviceIcon">⚡</div>
               <h3 className="serviceTitle">{s.title}</h3>
               <p className="serviceDesc">{s.desc}</p>
               <ul className="serviceFeatures">
-                {s.features.map((f) => (
-                  <li key={f}>{f}</li>
-                ))}
+                {s.features.map((f, j) => <li key={j}>{f}</li>)}
               </ul>
             </div>
           ))}
@@ -183,61 +135,44 @@ function Services() {
   )
 }
 
-// ── About ─────────────────────────────────────────────────────────────────────
-const stats = [
-  { num: '15+', label: 'Jahre Berufserfahrung' },
-  { num: '500+', label: 'abgeschlossene Projekte' },
-  { num: '24/7', label: 'Notdienst-Erreichbarkeit' },
-  { num: '100%', label: 'zertifizierte Fachkräfte' },
-]
-
+// ── About ────────────────────────────────────────────────────────────────────
 function About() {
   return (
     <section className="section" id="ueber-uns">
       <div className="container">
         <div className="aboutInner">
-          <div className="statsGrid">
-            {stats.map((s) => (
-              <div key={s.label} className="statCard">
-                <span className="statNum">{s.num}</span>
-                <span className="statLabel">{s.label}</span>
-              </div>
-            ))}
-          </div>
-
+          <div className="aboutImage">⚡</div>
           <div className="aboutText">
-            <div className="sectionTag">Über uns</div>
-            <h2 className="sectionTitle">
-              Erfahrung, die<br />man spürt.
-            </h2>
+            <div className="sectionLabel">Über uns</div>
+            <h2 className="sectionTitle">Handwerk mit Haltung.</h2>
             <p>
-              FIJA Elektro ist ein inhabergeführter Elektrofachbetrieb mit über
-              15 Jahren Erfahrung. Unser Team aus qualifizierten Elektroinstallateuren
-              und Meistern betreut Privatkunden, Gewerbetreibende und
-              Industriebetriebe in ganz Deutschland.
+              FIJA Elektro wurde 2009 in Augsburg gegründet. Was als
+              Ein-Mann-Betrieb begann, ist heute ein Team von sechs
+              qualifizierten Elektrotechnikern — aber die Grundhaltung ist
+              dieselbe geblieben: sauber arbeiten, ehrlich beraten, fair
+              kalkulieren.
             </p>
             <p>
-              Wir legen größten Wert auf Qualität, Transparenz und pünktliche
-              Ausführung. Jedes Projekt — ob kleiner Reparatureinsatz oder
-              komplexe Industrieanlage — wird mit derselben Sorgfalt geplant
-              und umgesetzt.
+              Wir spezialisieren uns auf installationsnahe Arbeit für
+              Privatgebäude und kleinere Gewerbeobjekte. Große Industrieprojekte
+              machen wir bewusst nicht — dort geht die persönliche Note verloren.
             </p>
-            <div className="aboutHighlights">
-              <div className="aboutHighlight">
-                <span>✓</span>
-                <span>Alle Arbeiten nach aktuellen VDE- und DIN-Normen</span>
+            <div className="statsGrid" style={{ marginTop: 40 }}>
+              <div className="statCard">
+                <span className="statNum">2009</span>
+                <span className="statLabel">Gegründet in Augsburg</span>
               </div>
-              <div className="aboutHighlight">
-                <span>✓</span>
-                <span>Meisterbetrieb mit geprüften Elektrofachkräften</span>
+              <div className="statCard">
+                <span className="statNum">6</span>
+                <span className="statLabel">Fachkräfte im Team</span>
               </div>
-              <div className="aboutHighlight">
-                <span>✓</span>
-                <span>Umfassende Haftpflicht- und Betriebsversicherung</span>
+              <div className="statCard">
+                <span className="statNum">Meister</span>
+                <span className="statLabel">Betrieb mit IHK-Abschluss</span>
               </div>
-              <div className="aboutHighlight">
-                <span>✓</span>
-                <span>Kostenlose Erstberatung und transparente Angebote</span>
+              <div className="statCard">
+                <span className="statNum">100%</span>
+                <span className="statLabel">Eigene Mitarbeiter</span>
               </div>
             </div>
           </div>
@@ -250,26 +185,23 @@ function About() {
 // ── Testimonials ──────────────────────────────────────────────────────────────
 const testimonials = [
   {
-    initials: 'KR',
-    name: 'Klaus Richter',
-    role: 'Hauseigentümer, München',
-    quote:
-      'FIJA Elektro hat unsere komplette Elektroanlage im Altbau erneuert — pünktlich, sauber und zum vereinbarten Preis. Der Notdienst war nach einem Stromausfall in unter 45 Minuten bei uns. Absolute Empfehlung!',
+    quote: 'FIJA hat bei unserem Altbau in der Innenstadt die komplette Elektrik erneuert — inklusive neuer Verteiler, Erdung und Rauchmelder. Saubere Arbeit, faire Kosten. Würde ich jederzeit wieder nehmen.',
+    name: 'Thomas Berger',
+    role: 'Eigentümer, Altbau Augsburg',
+    initials: 'TB'
   },
   {
-    initials: 'SB',
-    name: 'Sandra Bauer',
-    role: 'Geschäftsführerin, Bauer Immobilien GmbH',
-    quote:
-      'Wir beauftragen FIJA Elektro regelmäßig für unsere Gewerbeobjekte. Die Qualität der Arbeit ist konstant hoch, die Kommunikation unkompliziert und die Dokumentation lückenlos. Ein verlässlicher Partner für unser Unternehmen.',
+    quote: 'Wir haben FIJA für die Elektroinstallation in unserem Hotel mit 40 Zimmern beauftragt. Pünktlich, zuverlässig, und die Kommunikation war ausgezeichnet. Das Team war jederzeit erreichbar.',
+    name: 'Marion Schneider',
+    role: 'Hotel Schwarzwald Panorama, Freiburg',
+    initials: 'MS'
   },
   {
-    initials: 'TM',
-    name: 'Thomas Müller',
-    role: 'Bauleiter, Müller Bau GmbH',
-    quote:
-      'Im Schlüsselfertigbau kommt es auf Termintreue an. FIJA Elektro hat bei mehreren Projekten geliefert, was versprochen wurde — auch wenn es mal eng wurde. Das Smart-Home-System für unser Wohnbauprojekt war technisch einwandfrei.',
-  },
+    quote: 'Nach dem Blitzschaden war schnelle Hilfe gefragt. FIJA war innerhalb von 2 Stunden vor Ort und hatte die Anlage am nächsten Morgen wieder instand gesetzt. Top Reaktionszeit.',
+    name: 'Frank Heilig',
+    role: 'Heilig Gebäudemanagement, München',
+    initials: 'FH'
+  }
 ]
 
 function Testimonials() {
@@ -277,8 +209,8 @@ function Testimonials() {
     <section className="section testimonialsSection" id="referenzen">
       <div className="container">
         <div className="testimonialsHeader">
-          <div className="sectionTag">Kundenstimmen</div>
-          <h2 className="sectionTitle">Was unsere Kunden sagen</h2>
+          <div className="sectionLabel">Referenzen</div>
+          <h2 className="sectionTitle">Was Kunden sagen.</h2>
           <p className="sectionSubtitle">
             Demo-Webseite — Kundenstimmen sind illustrativ / beispielhaft.
           </p>
@@ -286,12 +218,7 @@ function Testimonials() {
         <div className="testimonialsGrid">
           {testimonials.map((t) => (
             <div key={t.name} className="testimonialCard">
-              <div className="testimonialStars">
-                {[1, 2, 3, 4, 5].map((i) => (
-                  <span key={i} className="testimonialStar">★</span>
-                ))}
-              </div>
-              <p className="testimonialQuote">„{t.quote}"</p>
+              <p className="testimonialQuote">"{t.quote}"</p>
               <div className="testimonialAuthor">
                 <div className="testimonialAvatar">{t.initials}</div>
                 <div>
@@ -307,116 +234,80 @@ function Testimonials() {
   )
 }
 
-// ── Contact ───────────────────────────────────────────────────────────────────
+// ── Contact ────────────────────────────────────────────────────────────────────
 function Contact() {
-  const [submitted, setSubmitted] = useState(false)
-
-  function handleSubmit(e: React.FormEvent) {
-    e.preventDefault()
-    setSubmitted(true)
-  }
-
   return (
     <section className="section" id="kontakt">
       <div className="container">
         <div className="contactInner">
-          <div>
-            <div className="sectionTag">Kontakt</div>
-            <h2 className="sectionTitle">
-              Bereit für Ihr<br />Projekt?
-            </h2>
-            <p className="sectionSubtitle" style={{ marginBottom: '48px' }}>
-              Kontaktieren Sie uns für ein kostenloses und unverbindliches
-              Angebot. Wir melden uns innerhalb von 24 Stunden bei Ihnen.
+          <div className="contactInfo">
+            <div className="sectionLabel">Kontakt</div>
+            <h2 className="sectionTitle">Sprechen Sie mit uns.</h2>
+            <p className="sectionSubtitle">
+              Anfragen beantworten wir innerhalb von 24 Stunden. Für dringende
+              Fälle sind wir auch telefonisch erreichbar.
             </p>
-            <div className="contactInfo">
-              <div className="contactInfoItem">
-                <div className="contactInfoIcon">📧</div>
-                <div>
-                  <div className="contactInfoLabel">E-Mail</div>
-                  <div className="contactInfoValue">info@fija-elektro.de</div>
-                </div>
+
+            <div className="contactInfoItem">
+              <div className="contactInfoIcon">📍</div>
+              <div>
+                <div className="contactInfoLabel">Adresse</div>
+                <div className="contactInfoValue">Augsburg, Bayern (Deutschland)</div>
               </div>
-              <div className="contactInfoItem">
-                <div className="contactInfoIcon">🚨</div>
-                <div>
-                  <div className="contactInfoLabel">Notdienst</div>
-                  <div className="contactInfoValue">24/7 erreichbar</div>
-                </div>
+            </div>
+            <div className="contactInfoItem">
+              <div className="contactInfoIcon">📞</div>
+              <div>
+                <div className="contactInfoLabel">Telefon</div>
+                <div className="contactInfoValue">+49 821 123 4567</div>
               </div>
-              <div className="contactInfoItem">
-                <div className="contactInfoIcon">🕐</div>
-                <div>
-                  <div className="contactInfoLabel">Bürozeiten</div>
-                  <div className="contactInfoValue">Mo–Fr 07:00–18:00 Uhr</div>
-                </div>
+            </div>
+            <div className="contactInfoItem">
+              <div className="contactInfoIcon">✉️</div>
+              <div>
+                <div className="contactInfoLabel">E-Mail</div>
+                <div className="contactInfoValue">info@fija-elektro.de</div>
               </div>
-              <div className="contactInfoItem">
-                <div className="contactInfoIcon">📍</div>
-                <div>
-                  <div className="contactInfoLabel">Einsatzgebiet</div>
-                  <div className="contactInfoValue">Bundesweit / ganz Deutschland</div>
-                </div>
+            </div>
+            <div className="contactInfoItem">
+              <div className="contactInfoIcon">🕐</div>
+              <div>
+                <div className="contactInfoLabel">Öffnungszeiten</div>
+                <div className="contactInfoValue">Mo–Fr 07:00–18:00 | Notdienst: 24/7</div>
               </div>
             </div>
           </div>
 
           <div className="contactForm">
-            {submitted ? (
-              <div style={{ textAlign: 'center', padding: '40px 0' }}>
-                <div style={{ fontSize: '48px', marginBottom: '16px' }}>✅</div>
-                <h3 className="formTitle">Nachricht gesendet!</h3>
-                <p className="formSubtitle">
-                  Vielen Dank für Ihre Anfrage. Wir melden uns innerhalb von
-                  24 Stunden bei Ihnen.
-                </p>
+            <div className="formTitle">Anfrage senden</div>
+            <div className="formSubtitle">Wir melden uns innerhalb von 24 Stunden.</div>
+            <form onSubmit={(e) => e.preventDefault()}>
+              <div className="formRow">
+                <div className="formGroup">
+                  <label className="formLabel">Name</label>
+                  <input className="formInput" type="text" placeholder="Ihr Name" />
+                </div>
+                <div className="formGroup">
+                  <label className="formLabel">E-Mail</label>
+                  <input className="formInput" type="email" placeholder="ihre@email.de" />
+                </div>
               </div>
-            ) : (
-              <>
-                <h3 className="formTitle">Anfrage senden</h3>
-                <p className="formSubtitle">
-                  Kostenloses Angebot in wenigen Minuten
-                </p>
-                <form onSubmit={handleSubmit}>
-                  <div className="formRow">
-                    <div className="formGroup">
-                      <label className="formLabel">Vorname</label>
-                      <input className="formInput" type="text" placeholder="Max" required />
-                    </div>
-                    <div className="formGroup">
-                      <label className="formLabel">Nachname</label>
-                      <input className="formInput" type="text" placeholder="Mustermann" required />
-                    </div>
-                  </div>
-                  <div className="formGroup">
-                    <label className="formLabel">E-Mail</label>
-                    <input className="formInput" type="email" placeholder="max@beispiel.de" required />
-                  </div>
-                  <div className="formGroup">
-                    <label className="formLabel">Leistung</label>
-                    <select className="formSelect">
-                      <option value="">Bitte wählen...</option>
-                      <option>Elektroinstallation</option>
-                      <option>Sicherheitstechnik</option>
-                      <option>Elektro-Notdienst</option>
-                      <option>Smart Home</option>
-                      <option>Sonstiges</option>
-                    </select>
-                  </div>
-                  <div className="formGroup">
-                    <label className="formLabel">Nachricht</label>
-                    <textarea
-                      className="formTextarea"
-                      placeholder="Beschreiben Sie kurz Ihr Anliegen..."
-                      required
-                    />
-                  </div>
-                  <button type="submit" className="formSubmit">
-                    Jetzt anfragen →
-                  </button>
-                </form>
-              </>
-            )}
+              <div className="formGroup">
+                <label className="formLabel">Betreff</label>
+                <select className="formSelect">
+                  <option>Elektroinstallation</option>
+                  <option>Sicherheitstechnik</option>
+                  <option>Smart Home</option>
+                  <option>Elektro-Notdienst</option>
+                  <option>Sonstiges</option>
+                </select>
+              </div>
+              <div className="formGroup">
+                <label className="formLabel">Nachricht</label>
+                <textarea className="formTextarea" placeholder="Beschreiben Sie kurz Ihr Anliegen..." />
+              </div>
+              <button type="submit" className="formSubmit">Absenden →</button>
+            </form>
           </div>
         </div>
       </div>
@@ -424,7 +315,7 @@ function Contact() {
   )
 }
 
-// ── Footer ────────────────────────────────────────────────────────────────────
+// ── Footer ─────────────────────────────────────────────────────────────────────
 function Footer() {
   return (
     <footer className="footer">
@@ -440,21 +331,18 @@ function Footer() {
               FIJA <span>Elektro</span>
             </div>
             <p className="footerBrandDesc">
-              Ihr zuverlässiger Elektrofachbetrieb für Installation,
-              Sicherheitstechnik, Notdienst und Smart Home.
+              Elektrotechnik mit Vertrauen. Seit 2009 in Augsburg.
             </p>
           </div>
-
           <div>
             <div className="footerColTitle">Leistungen</div>
             <ul className="footerLinks">
               <li><a href="#leistungen">Elektroinstallation</a></li>
               <li><a href="#leistungen">Sicherheitstechnik</a></li>
-              <li><a href="#leistungen">Elektro-Notdienst</a></li>
               <li><a href="#leistungen">Smart Home</a></li>
+              <li><a href="#leistungen">Elektro-Notdienst</a></li>
             </ul>
           </div>
-
           <div>
             <div className="footerColTitle">Unternehmen</div>
             <ul className="footerLinks">
@@ -463,21 +351,17 @@ function Footer() {
               <li><a href="#kontakt">Kontakt</a></li>
             </ul>
           </div>
-
           <div>
             <div className="footerColTitle">Kontakt</div>
             <ul className="footerLinks">
               <li><a href="mailto:info@fija-elektro.de">info@fija-elektro.de</a></li>
-              <li><span style={{ color: 'var(--text-muted)', fontSize: '14px' }}>Mo–Fr 07:00–18:00</span></li>
-              <li><span style={{ color: 'var(--text-muted)', fontSize: '14px' }}>Notdienst: 24/7</span></li>
+              <li><a href="#">+49 821 123 4567</a></li>
+              <li><span style={{ color: 'var(--text-muted)', fontSize: 14 }}>Mo–Fr 07:00–18:00</span></li>
             </ul>
           </div>
         </div>
-
         <div className="footerBottom">
-          <p className="footerCopy">
-            © {new Date().getFullYear()} FIJA Elektro. Alle Rechte vorbehalten.
-          </p>
+          <p className="footerCopy">© {new Date().getFullYear()} FIJA Elektro. Alle Rechte vorbehalten.</p>
           <div className="footerLegal">
             <a href="#">Impressum</a>
             <a href="#">Datenschutz</a>

@@ -2,102 +2,64 @@
 
 import { useState } from 'react'
 
-// ── Navbar ──────────────────────────────────────────────────────────────────
+// Sobrus Systeme — IT & Elektrotechnik
+// Accent: #7C3AED (purple)
+
 function Navbar() {
   const [open, setOpen] = useState(false)
-
   return (
     <nav className="navbar">
       <div className="navInner">
         <a href="#" className="navLogo">
           <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
             <rect width="28" height="28" rx="7" fill="#7C3AED" fillOpacity="0.15" />
-            <rect x="7" y="7" width="6" height="6" rx="1.5" fill="#7C3AED" />
-            <rect x="15" y="7" width="6" height="6" rx="1.5" fill="#7C3AED" fillOpacity="0.6" />
-            <rect x="7" y="15" width="6" height="6" rx="1.5" fill="#7C3AED" fillOpacity="0.6" />
-            <rect x="15" y="15" width="6" height="6" rx="1.5" fill="#7C3AED" />
+            <path d="M8 20L14 8L20 20" stroke="#7C3AED" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
+            <path d="M10 16h8" stroke="#7C3AED" strokeWidth="2.2" strokeLinecap="round" />
           </svg>
           Sobrus <span>Systeme</span>
         </a>
-
         <ul className="navLinks" style={open ? { display: 'flex' } : {}}>
           <li><a href="#leistungen">Leistungen</a></li>
           <li><a href="#ueber-uns">Über uns</a></li>
-          <li><a href="#kundenstimmen">Kundenstimmen</a></li>
-          <li><a href="#kontakt" className="navCta">Kontakt aufnehmen</a></li>
+          <li><a href="#kundenstimmen">Referenzen</a></li>
+          <li><a href="#kontakt" className="navCta">Angebot anfragen</a></li>
         </ul>
-
-        <button
-          className="navToggle"
-          onClick={() => setOpen(!open)}
-          aria-label="Menü öffnen"
-        >
-          <span />
-          <span />
-          <span />
-        </button>
+        <button className="navToggle" onClick={() => setOpen(!open)} aria-label="Menü"><span /><span /><span /></button>
       </div>
     </nav>
   )
 }
 
-// ── Hero ─────────────────────────────────────────────────────────────────────
+const ACCENT = '#7C3AED'
+
 function Hero() {
   return (
-    <section className="hero">
-      <div className="heroGlow" />
+    <section className="hero" style={{ '--page-accent': ACCENT } as React.CSSProperties}>
+      <div className="heroBg" />
       <div className="heroInner">
-        <div>
-          <div className="heroBadge">
-            <span className="heroBadgeDot" />
-            IT &amp; Elektrotechnik aus einer Hand
-          </div>
+        <div className="heroContent">
+          <div className="heroBadge">IT & Elektrotechnik aus einer Hand</div>
           <h1 className="heroTitle">
-            Technik, die<br />
-            Ihr Unternehmen <em>voranbringt.</em>
+            Netzwerke, die<br />
+            <em>funktionieren</em> —<br />
+            jeden Tag.
           </h1>
           <p className="heroSubtitle">
-            Sobrus Systeme ist Ihr zuverlässiger Partner für Netzwerktechnik,
-            Elektroinstallation, IT-Services und Smart Home — professionell
-            geplant, sauber umgesetzt und langfristig betreut.
+            Wir verbinden IT-Infrastruktur mit Elektrotechnik — für Unternehmen,
+            die auf Zuverlässigkeit angewiesen sind. KeineBuzzwords, keine
+            Übertreibungen. Einfach funktionierende Systeme.
           </p>
           <div className="heroCtas">
-            <a href="#kontakt" className="btnPrimary">
-              Projekt anfragen →
-            </a>
-            <a href="#leistungen" className="btnSecondary">
-              Unsere Leistungen
-            </a>
+            <a href="#kontakt" className="btnPrimary">Beratung anfragen →</a>
+            <a href="#leistungen" className="btnSecondary">Mehr erfahren</a>
           </div>
         </div>
-
         <div className="heroVisual">
-          <div className="heroCard">
-            <div className="heroCardGlow" />
-            <div className="heroCardIcon">🖥️</div>
-            <div className="heroCardTitle">Ihr IT-Systemhaus</div>
-            <div className="heroCardSubtitle">
-              Zertifiziert, versichert und seit über 10 Jahren Ihr Ansprechpartner
-              für IT-Infrastruktur und Elektrotechnik.
-            </div>
-            <div className="heroStats">
-              <div className="heroStat">
-                <span className="heroStatNum">10+</span>
-                <span className="heroStatLabel">Jahre Erfahrung</span>
-              </div>
-              <div className="heroStat">
-                <span className="heroStatNum">300+</span>
-                <span className="heroStatLabel">Projekte</span>
-              </div>
-              <div className="heroStat">
-                <span className="heroStatNum">24/7</span>
-                <span className="heroStatLabel">IT-Support</span>
-              </div>
-              <div className="heroStat">
-                <span className="heroStatNum">100%</span>
-                <span className="heroStatLabel">Zufriedenheit</span>
-              </div>
-            </div>
+          <div className="heroStats">
+            <div className="heroStat"><span className="heroStatNum">18+</span><span className="heroStatLabel">Jahre Branchenerfahrung</span></div>
+            <div className="heroStat"><span className="heroStatNum">200+</span><span className="heroStatLabel">Unternehmenskunden</span></div>
+            <div className="heroStat"><span className="heroStatNum">99,7%</span><span className="heroStatLabel">Systemverfügbarkeit</span></div>
+            <div className="heroStat"><span className="heroStatNum">24/7</span><span className="heroStatLabel">Support verfügbar</span></div>
           </div>
         </div>
       </div>
@@ -105,52 +67,11 @@ function Hero() {
   )
 }
 
-// ── Services ─────────────────────────────────────────────────────────────────
 const services = [
-  {
-    icon: '🌐',
-    title: 'Netzwerktechnik',
-    desc: 'Von der strukturierten Verkabelung bis zum vollständig verwalteten Netzwerk — wir planen, installieren und konfigurieren Ihre IT-Infrastruktur nach Ihren Anforderungen.',
-    features: [
-      'Strukturierte Gebäudeverkabelung (Cat6/Cat7)',
-      'WLAN-Ausleuchtung & Access-Point-Planung',
-      'Managed Switches & Router-Konfiguration',
-      'VPN & Netzwerksicherheit',
-    ],
-  },
-  {
-    icon: '⚡',
-    title: 'Elektroinstallation',
-    desc: 'Professionelle Elektroarbeiten für Gewerbe und Industrie — von der Zuleitung bis zur Unterverteilung, stets nach aktuellen VDE-Normen und mit vollständiger Dokumentation.',
-    features: [
-      'Neu- und Erweiterungsinstallationen',
-      'Unterverteilungen & Zählerschränke',
-      'Leitungsverlegung & Kabeltrassen',
-      'Prüfprotokoll nach DGUV V3',
-    ],
-  },
-  {
-    icon: '💻',
-    title: 'IT-Services',
-    desc: 'Wir übernehmen die komplette IT-Betreuung Ihres Unternehmens — von der Einrichtung einzelner Arbeitsplätze bis zum Full-Managed-Service für Ihre gesamte IT-Landschaft.',
-    features: [
-      'Server- und Client-Administration',
-      'Microsoft 365 & Cloud-Dienste',
-      'IT-Sicherheit & Backup-Konzepte',
-      'Helpdesk & Vor-Ort-Support',
-    ],
-  },
-  {
-    icon: '🏠',
-    title: 'Smart Home',
-    desc: 'Intelligente Gebäudetechnik, die Komfort, Sicherheit und Energieeffizienz verbindet. Wir integrieren KNX, Loxone und weitere Systeme für Wohn- und Gewerbeimmobilien.',
-    features: [
-      'KNX & Loxone Systeme',
-      'Automatisierte Licht- und Beschattungssteuerung',
-      'Heizungsregelung & Energiemanagement',
-      'App-Steuerung & Sprachassistenten',
-    ],
-  },
+  { title: 'Netzwerktechnik', desc: 'Strukturierte Verkabelung, Switches, Router — von der Planung bis zur Dokumentation. Für Büros, Lager und Gewerbehallen.', features: ['Cat.6A / Cat.7 Verkabelung', 'WLAN-Ausleuchtung', 'Firewall-Konfiguration', 'Monitoring & Wartung'] },
+  { title: 'IT-Services', desc: 'IT-Betreuung, die verständlich ist. Kein Claim — wir kümmern uns um Ihre IT-Infrastruktur, damit Sie sich auf Ihr Geschäft konzentrieren können.', features: ['Remote-Support', 'Backup-Lösungen', 'VPN-Setups', 'Lizenzmanagement'] },
+  { title: 'Elektroinstallation', desc: 'Stromkreise, Verteiler, Beleuchtung — für Gewerbe und Industrie. Auch in Kombination mit IT-Projekten aus einer Hand.', features: ['Mittel- und Niederspannung', 'USV-Anlagen', 'Beleuchtungsmodernisierung', 'E-Check'] },
+  { title: 'Smart Building', desc: 'Gebäudeautomation, die nicht nur auf dem Papier smart ist — sondern im Alltag. Für Bürogebäude, Lager und Gewerbe.', features: ['Gebäudeautomatisierung', 'Zutritt & Alarm', 'Energiemonitoring', 'Schnittstellen-Integration'] }
 ]
 
 function Services() {
@@ -158,25 +79,17 @@ function Services() {
     <section className="section servicesSection" id="leistungen">
       <div className="container">
         <div className="servicesHeader">
-          <div className="sectionTag">Leistungen</div>
-          <h2 className="sectionTitle">Was wir für Sie leisten</h2>
-          <p className="sectionSubtitle">
-            Als Systemhaus für IT und Elektrotechnik bieten wir Ihnen das
-            komplette Spektrum moderner Infrastrukturlösungen — alles aus
-            einer Hand, termingerecht und mit Festpreisgarantie.
-          </p>
+          <div className="sectionLabel">Leistungen</div>
+          <h2 className="sectionTitle">Was wir für Sie tun.</h2>
+          <p className="sectionSubtitle">Vier Kernbereiche — alle aus einer Hand, alle mit dem gleichen Anspruch an Qualität.</p>
         </div>
         <div className="servicesGrid">
-          {services.map((s) => (
-            <div key={s.title} className="serviceCard">
-              <div className="serviceIcon">{s.icon}</div>
+          {services.map((s, i) => (
+            <div key={i} className="serviceCard">
+              <div className="serviceIcon">⚡</div>
               <h3 className="serviceTitle">{s.title}</h3>
               <p className="serviceDesc">{s.desc}</p>
-              <ul className="serviceFeatures">
-                {s.features.map((f) => (
-                  <li key={f}>{f}</li>
-                ))}
-              </ul>
+              <ul className="serviceFeatures">{s.features.map((f, j) => <li key={j}>{f}</li>)}</ul>
             </div>
           ))}
         </div>
@@ -185,63 +98,22 @@ function Services() {
   )
 }
 
-// ── About ─────────────────────────────────────────────────────────────────────
-const stats = [
-  { num: '10+', label: 'Jahre Berufserfahrung' },
-  { num: '300+', label: 'abgeschlossene Projekte' },
-  { num: '24/7', label: 'IT-Support-Erreichbarkeit' },
-  { num: '100%', label: 'zertifizierte Fachkräfte' },
-]
-
 function About() {
   return (
     <section className="section" id="ueber-uns">
       <div className="container">
         <div className="aboutInner">
-          <div className="statsGrid">
-            {stats.map((s) => (
-              <div key={s.label} className="statCard">
-                <span className="statNum">{s.num}</span>
-                <span className="statLabel">{s.label}</span>
-              </div>
-            ))}
-          </div>
-
+          <div className="aboutImage">⚡</div>
           <div className="aboutText">
-            <div className="sectionTag">Über uns</div>
-            <h2 className="sectionTitle">
-              IT trifft<br />Elektrotechnik.
-            </h2>
-            <p>
-              Sobrus Systeme ist ein inhabergeführtes Unternehmen mit über
-              10 Jahren Erfahrung in der IT- und Elektrotechnikbranche. Unser
-              Team aus qualifizierten Technikern und zertifizierten IT-Fachleuten
-              betreut mittelständische Unternehmen, Gewerbeobjekte und
-              anspruchsvolle Privatkunden.
-            </p>
-            <p>
-              Wir verstehen, dass Infrastruktur das Rückgrat jedes Betriebs ist.
-              Deshalb arbeiten wir sorgfältig, transparent und termingerecht —
-              ob bei der Neuvernetzung eines Bürogebäudes, der Modernisierung
-              einer Elektroanlage oder der Implementierung eines Smart-Home-Systems.
-            </p>
-            <div className="aboutHighlights">
-              <div className="aboutHighlight">
-                <span>✓</span>
-                <span>Elektroarbeiten nach VDE- und DIN-Normen, vollständig dokumentiert</span>
-              </div>
-              <div className="aboutHighlight">
-                <span>✓</span>
-                <span>Zertifizierte IT-Fachkräfte mit Herstellerzertifizierungen</span>
-              </div>
-              <div className="aboutHighlight">
-                <span>✓</span>
-                <span>Umfassende Betriebs- und Haftpflichtversicherung</span>
-              </div>
-              <div className="aboutHighlight">
-                <span>✓</span>
-                <span>Kostenlose Erstberatung und transparente Festpreisangebote</span>
-              </div>
+            <div className="sectionLabel">Über uns</div>
+            <h2 className="sectionTitle">Erfahrung, die zählt.</h2>
+            <p>Sobrus Systeme wurde 2006 in Stuttgart gegründet. Seitdem haben wir uns auf die Kombination von IT und Elektrotechnik spezialisiert — ein Bereich, der heute wichtiger ist als je zuvor.</p>
+            <p>Unser Team besteht aus Netzwerktechnikern, IT-Fachleuten und Elektromeistern. Wir arbeiten nicht mit Subunternehmern — jede Aufgabe wird von festangestellten Spezialisten erledigt.</p>
+            <div className="statsGrid" style={{ marginTop: 40 }}>
+              <div className="statCard"><span className="statNum">2006</span><span className="statLabel">Gegründet in Stuttgart</span></div>
+              <div className="statCard"><span className="statNum">12</span><span className="statLabel">Festangestellte Fachkräfte</span></div>
+              <div className="statCard"><span className="statNum">200+</span><span className="statLabel">Unternehmenskunden</span></div>
+              <div className="statCard"><span className="statNum">99%</span><span className="statLabel">Kundentreue</span></div>
             </div>
           </div>
         </div>
@@ -250,29 +122,10 @@ function About() {
   )
 }
 
-// ── Testimonials ──────────────────────────────────────────────────────────────
 const testimonials = [
-  {
-    initials: 'MH',
-    name: 'Markus Hoffmann',
-    role: 'Geschäftsführer, Hoffmann Logistik GmbH',
-    quote:
-      'Sobrus Systeme hat unsere gesamte IT-Infrastruktur erneuert — Netzwerk, Server, Arbeitsplätze. Die Planung war durchdacht, die Umsetzung reibungslos und das Ergebnis übertrifft unsere Erwartungen. Endlich ein Partner, dem man die IT anvertrauen kann.',
-  },
-  {
-    initials: 'LW',
-    name: 'Laura Wenzel',
-    role: 'Inhaberin, Praxis Wenzel',
-    quote:
-      'Nach dem Umzug unserer Praxis hat Sobrus Systeme in kürzester Zeit Netzwerk und Elektrik komplett neu aufgebaut. Sauber, professionell und ohne einen einzigen Betriebsausfall. Der Smart-Home-Empfangsbereich ist das Highlight — unsere Patienten sind begeistert.',
-  },
-  {
-    initials: 'RK',
-    name: 'Roland Koch',
-    role: 'Bauleiter, Koch & Partner Immobilien',
-    quote:
-      'Wir setzen Sobrus Systeme auf mehreren Bauprojekten als Generalunternehmer für IT und Elektrik ein. Termintreue, saubere Dokumentation, kompetente Ansprechpartner — genau das braucht man im Bauprojektgeschäft. Klare Empfehlung.',
-  },
+  { quote: 'Wir haben Sobrus beauftragt, unsere komplette Netzwerkinfrastruktur inklusive WLAN und Serverraum zu erneuern. Die Beratung war ehrlich — sie haben uns auch davon abgeraten, Dinge zu kaufen, die wir nicht brauchen. Das hat mich überzeugt.', name: 'Michael Krüger', role: 'IT-Leiter, Krüger Maschinenbau GmbH, Stuttgart', initials: 'MK' },
+  { quote: 'Nach einem Wasserschaden war die gesamte IT-Infrastruktur unserer Filiale zerstört. Sobrus hatte alles innerhalb von 3 Tagen wieder am Laufen — inklusive neuer Verkabelung und USV. Während andere noch Angebote schrieben, waren die schon vor Ort.', name: 'Sandra Brandt', role: 'Geschäftsführerin, Brandt Retail GmbH, München', initials: 'SB' },
+  { quote: 'Der E-Check für unser neues Bürogebäude war gründlich und professionell. Sobrus hat sicherheitsrelevante Mängel gefunden, die der vorherige Elektriker übersehen hatte. Danke für die Sorgfalt.', name: 'Ralf Petersen', role: 'Facilities Manager, Petersen & Co. GmbH, Hamburg', initials: 'RP' }
 ]
 
 function Testimonials() {
@@ -280,27 +133,17 @@ function Testimonials() {
     <section className="section testimonialsSection" id="kundenstimmen">
       <div className="container">
         <div className="testimonialsHeader">
-          <div className="sectionTag">Kundenstimmen</div>
-          <h2 className="sectionTitle">Was unsere Kunden sagen</h2>
-          <p className="sectionSubtitle">
-            Demo-Webseite — Kundenstimmen sind illustrativ / beispielhaft.
-          </p>
+          <div className="sectionLabel">Kundenstimmen</div>
+          <h2 className="sectionTitle">Was Kunden sagen.</h2>
+          <p className="sectionSubtitle">Demo-Webseite — Kundenstimmen sind illustrativ / beispielhaft.</p>
         </div>
         <div className="testimonialsGrid">
           {testimonials.map((t) => (
             <div key={t.name} className="testimonialCard">
-              <div className="testimonialStars">
-                {[1, 2, 3, 4, 5].map((i) => (
-                  <span key={i} className="testimonialStar">★</span>
-                ))}
-              </div>
-              <p className="testimonialQuote">„{t.quote}"</p>
+              <p className="testimonialQuote">"{t.quote}"</p>
               <div className="testimonialAuthor">
                 <div className="testimonialAvatar">{t.initials}</div>
-                <div>
-                  <div className="testimonialName">{t.name}</div>
-                  <div className="testimonialRole">{t.role}</div>
-                </div>
+                <div><div className="testimonialName">{t.name}</div><div className="testimonialRole">{t.role}</div></div>
               </div>
             </div>
           ))}
@@ -310,120 +153,54 @@ function Testimonials() {
   )
 }
 
-// ── Contact ───────────────────────────────────────────────────────────────────
 function Contact() {
-  const [submitted, setSubmitted] = useState(false)
-
-  function handleSubmit(e: React.FormEvent) {
-    e.preventDefault()
-    setSubmitted(true)
-  }
-
   return (
     <section className="section" id="kontakt">
       <div className="container">
         <div className="contactInner">
-          <div>
-            <div className="sectionTag">Kontakt</div>
-            <h2 className="sectionTitle">
-              Bereit für Ihr<br />nächstes Projekt?
-            </h2>
-            <p className="sectionSubtitle" style={{ marginBottom: '48px' }}>
-              Kontaktieren Sie uns für ein kostenloses und unverbindliches
-              Angebot. Wir melden uns innerhalb von 24 Stunden bei Ihnen.
-            </p>
-            <div className="contactInfo">
-              <div className="contactInfoItem">
-                <div className="contactInfoIcon">📧</div>
-                <div>
-                  <div className="contactInfoLabel">E-Mail</div>
-                  <div className="contactInfoValue">sobrus.systeme@gmail.com</div>
-                </div>
-              </div>
-              <div className="contactInfoItem">
-                <div className="contactInfoIcon">💻</div>
-                <div>
-                  <div className="contactInfoLabel">IT-Support</div>
-                  <div className="contactInfoValue">24/7 für Bestandskunden erreichbar</div>
-                </div>
-              </div>
-              <div className="contactInfoItem">
-                <div className="contactInfoIcon">🕐</div>
-                <div>
-                  <div className="contactInfoLabel">Bürozeiten</div>
-                  <div className="contactInfoValue">Mo–Fr 08:00–17:00 Uhr</div>
-                </div>
-              </div>
-              <div className="contactInfoItem">
-                <div className="contactInfoIcon">📍</div>
-                <div>
-                  <div className="contactInfoLabel">Einsatzgebiet</div>
-                  <div className="contactInfoValue">Deutschlandweit</div>
-                </div>
-              </div>
+          <div className="contactInfo">
+            <div className="sectionLabel">Kontakt</div>
+            <h2 className="sectionTitle">Sprechen Sie mit uns.</h2>
+            <p className="sectionSubtitle">Für Unternehmen, die IT und Elektrotechnik zuverlässig brauchen. Ohne Buzzwords — direkt und klar.</p>
+            <div className="contactInfoItem">
+              <div className="contactInfoIcon">📍</div>
+              <div><div className="contactInfoLabel">Adresse</div><div className="contactInfoValue">Stuttgart, Baden-Württemberg</div></div>
+            </div>
+            <div className="contactInfoItem">
+              <div className="contactInfoIcon">📞</div>
+              <div><div className="contactInfoLabel">Telefon</div><div className="contactInfoValue">+49 711 987 6543</div></div>
+            </div>
+            <div className="contactInfoItem">
+              <div className="contactInfoIcon">✉️</div>
+              <div><div className="contactInfoLabel">E-Mail</div><div className="contactInfoValue">info@sobrus-systeme.de</div></div>
+            </div>
+            <div className="contactInfoItem">
+              <div className="contactInfoIcon">🕐</div>
+              <div><div className="contactInfoLabel">Öffnungszeiten</div><div className="contactInfoValue">Mo–Fr 08:00–17:00 | 24/7 Notfall-Support</div></div>
             </div>
           </div>
-
           <div className="contactForm">
-            {submitted ? (
-              <div style={{ textAlign: 'center', padding: '40px 0' }}>
-                <div style={{ fontSize: '48px', marginBottom: '16px' }}>✅</div>
-                <h3 className="formTitle">Nachricht gesendet!</h3>
-                <p className="formSubtitle">
-                  Vielen Dank für Ihre Anfrage. Wir melden uns innerhalb von
-                  24 Stunden bei Ihnen.
-                </p>
+            <div className="formTitle">Anfrage senden</div>
+            <div className="formSubtitle">Wir melden uns innerhalb von 24 Stunden.</div>
+            <form onSubmit={(e) => e.preventDefault()}>
+              <div className="formRow">
+                <div className="formGroup"><label className="formLabel">Name</label><input className="formInput" type="text" placeholder="Ihr Name" /></div>
+                <div className="formGroup"><label className="formLabel">Firma</label><input className="formInput" type="text" placeholder="Firmenname" /></div>
               </div>
-            ) : (
-              <>
-                <h3 className="formTitle">Anfrage senden</h3>
-                <p className="formSubtitle">
-                  Kostenloses Angebot in wenigen Minuten
-                </p>
-                <form onSubmit={handleSubmit}>
-                  <div className="formRow">
-                    <div className="formGroup">
-                      <label className="formLabel">Vorname</label>
-                      <input className="formInput" type="text" placeholder="Max" required />
-                    </div>
-                    <div className="formGroup">
-                      <label className="formLabel">Nachname</label>
-                      <input className="formInput" type="text" placeholder="Mustermann" required />
-                    </div>
-                  </div>
-                  <div className="formGroup">
-                    <label className="formLabel">E-Mail</label>
-                    <input className="formInput" type="email" placeholder="max@unternehmen.de" required />
-                  </div>
-                  <div className="formGroup">
-                    <label className="formLabel">Unternehmen (optional)</label>
-                    <input className="formInput" type="text" placeholder="Mustermann GmbH" />
-                  </div>
-                  <div className="formGroup">
-                    <label className="formLabel">Leistung</label>
-                    <select className="formSelect">
-                      <option value="">Bitte wählen...</option>
-                      <option>Netzwerktechnik</option>
-                      <option>Elektroinstallation</option>
-                      <option>IT-Services</option>
-                      <option>Smart Home</option>
-                      <option>Sonstiges</option>
-                    </select>
-                  </div>
-                  <div className="formGroup">
-                    <label className="formLabel">Nachricht</label>
-                    <textarea
-                      className="formTextarea"
-                      placeholder="Beschreiben Sie kurz Ihr Anliegen oder Projekt..."
-                      required
-                    />
-                  </div>
-                  <button type="submit" className="formSubmit">
-                    Jetzt anfragen →
-                  </button>
-                </form>
-              </>
-            )}
+              <div className="formGroup"><label className="formLabel">E-Mail</label><input className="formInput" type="email" placeholder="kontakt@firma.de" /></div>
+              <div className="formGroup">
+                <label className="formLabel">Betreff</label>
+                <select className="formSelect">
+                  <option>Netzwerktechnik</option>
+                  <option>IT-Services</option>
+                  <option>Elektroinstallation</option>
+                  <option>Smart Building</option>
+                  <option>Sonstiges</option>
+                </select>
+              </div>
+              <div className="formGroup"><label className="formLabel">Nachricht</label><textarea className="formTextarea" placeholder="Beschreiben Sie kurz Ihr Anliegen..." /></div>
+              <button type="submit" className="formSubmit">Absenden →</button>
+            </form>
           </div>
         </div>
       </div>
@@ -431,7 +208,6 @@ function Contact() {
   )
 }
 
-// ── Footer ────────────────────────────────────────────────────────────────────
 function Footer() {
   return (
     <footer className="footer">
@@ -441,75 +217,48 @@ function Footer() {
             <div className="footerBrand">
               <svg width="24" height="24" viewBox="0 0 28 28" fill="none">
                 <rect width="28" height="28" rx="7" fill="#7C3AED" fillOpacity="0.15" />
-                <rect x="7" y="7" width="6" height="6" rx="1.5" fill="#7C3AED" />
-                <rect x="15" y="7" width="6" height="6" rx="1.5" fill="#7C3AED" fillOpacity="0.6" />
-                <rect x="7" y="15" width="6" height="6" rx="1.5" fill="#7C3AED" fillOpacity="0.6" />
-                <rect x="15" y="15" width="6" height="6" rx="1.5" fill="#7C3AED" />
+                <path d="M8 20L14 8L20 20" stroke="#7C3AED" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
+                <path d="M10 16h8" stroke="#7C3AED" strokeWidth="2.2" strokeLinecap="round" />
               </svg>
               Sobrus <span>Systeme</span>
             </div>
-            <p className="footerBrandDesc">
-              Ihr Systemhaus für IT-Infrastruktur, Netzwerktechnik,
-              Elektroinstallation und Smart Home.
-            </p>
+            <p className="footerBrandDesc">IT & Elektrotechnik — seit 2006 in Stuttgart. Zuverlässig, ehrlich, kompetent.</p>
           </div>
-
           <div>
             <div className="footerColTitle">Leistungen</div>
             <ul className="footerLinks">
               <li><a href="#leistungen">Netzwerktechnik</a></li>
-              <li><a href="#leistungen">Elektroinstallation</a></li>
               <li><a href="#leistungen">IT-Services</a></li>
-              <li><a href="#leistungen">Smart Home</a></li>
+              <li><a href="#leistungen">Elektroinstallation</a></li>
+              <li><a href="#leistungen">Smart Building</a></li>
             </ul>
           </div>
-
           <div>
             <div className="footerColTitle">Unternehmen</div>
             <ul className="footerLinks">
               <li><a href="#ueber-uns">Über uns</a></li>
-              <li><a href="#kundenstimmen">Kundenstimmen</a></li>
+              <li><a href="#kundenstimmen">Referenzen</a></li>
               <li><a href="#kontakt">Kontakt</a></li>
             </ul>
           </div>
-
           <div>
             <div className="footerColTitle">Kontakt</div>
             <ul className="footerLinks">
-              <li><a href="mailto:sobrus.systeme@gmail.com">sobrus.systeme@gmail.com</a></li>
-              <li><span style={{ color: 'var(--text-muted)', fontSize: '14px' }}>Mo–Fr 08:00–17:00</span></li>
-              <li><span style={{ color: 'var(--text-muted)', fontSize: '14px' }}>IT-Support: 24/7</span></li>
+              <li><a href="mailto:info@sobrus-systeme.de">info@sobrus-systeme.de</a></li>
+              <li><a href="#">+49 711 987 6543</a></li>
+              <li><span style={{ color: 'var(--text-muted)', fontSize: 14 }}>Mo–Fr 08:00–17:00</span></li>
             </ul>
           </div>
         </div>
-
         <div className="footerBottom">
-          <p className="footerCopy">
-            © {new Date().getFullYear()} Sobrus Systeme. Alle Rechte vorbehalten.
-          </p>
-          <div className="footerLegal">
-            <a href="#">Impressum</a>
-            <a href="#">Datenschutz</a>
-          </div>
+          <p className="footerCopy">© {new Date().getFullYear()} Sobrus Systeme GmbH. Alle Rechte vorbehalten.</p>
+          <div className="footerLegal"><a href="#">Impressum</a><a href="#">Datenschutz</a></div>
         </div>
       </div>
     </footer>
   )
 }
 
-// ── Page ──────────────────────────────────────────────────────────────────────
 export default function Home() {
-  return (
-    <>
-      <Navbar />
-      <main>
-        <Hero />
-        <Services />
-        <About />
-        <Testimonials />
-        <Contact />
-      </main>
-      <Footer />
-    </>
-  )
+  return (<><Navbar /><main><Hero /><Services /><About /><Testimonials /><Contact /></main><Footer /></>)
 }
