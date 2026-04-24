@@ -44,14 +44,14 @@ const DEMOS: Record<string, {
     anschrift: 'Reutlinger Str. 129, 70597 Stuttgart-Degerloch', telefon: '0711 7 65 32 07', email: 'info@elektro-harak.de',
     beschreibung: 'Ihr Fachbetrieb fuer Elektroinstallation, Photovoltaik und Altbausanierung in Stuttgart-Degerloch',
     usps: ['Elektroinstallation', 'Photovoltaik & Solaranlagen', 'E-Check', 'Netzwerktechnik', 'Sat-Anlagen', 'Altbausanierung'],
-    farbe: '#00d4ff'
+    farbe: '#f97316'
   },
   'elektro-heinze': {
     name: 'Elektro & System-Technik Heinze', branche: 'Elektrotechnik / Systemtechnik',
     anschrift: 'Lindenring 87, 04824 Beucha', telefon: '034292 51 91 62', email: '',
     beschreibung: 'Ihr Fachbetrieb fuer Elektroinstallationen und Systemtechnik in Beucha bei Leipzig. Praezise. Zuverlaessig. Qualifiziert.',
     usps: ['Elektroinstallationen', 'Systemtechnik', 'Wartung & Pruefung', 'Sicherheitstechnik', 'Industrieelektrik', 'E-Check / Pruefberichte'],
-    farbe: '#22c55e'
+    farbe: '#f97316'
   },
   'smart-home-macher': {
     name: 'SmartHome-Macher', branche: 'Smart Home & Elektroinstallation',
@@ -74,160 +74,142 @@ export default async function DemoPage({ params }: PageProps) {
     notFound();
   }
 
-  const isBlueprint = demo.farbe === '#00d4ff' || demo.farbe === '#22c55e';
+  const isBlueprint = demo.farbe === '#f97316' || demo.farbe === '#22c55e';
 
   if (isBlueprint) {
+    const accentColor = demo.farbe;
     return (
       <div style={{
         minHeight: '100vh',
-        background: '#0a1628',
-        color: '#e0e8f0',
-        fontFamily: '"Space Mono", monospace',
+        background: '#18181b',
+        color: '#e4e4e7',
+        fontFamily: 'system-ui, -apple-system, sans-serif',
         position: 'relative',
         overflow: 'hidden'
       }}>
-        {/* Blueprint Grid Overlay */}
+        {/* Subtle Grid */}
         <div style={{
           position: 'fixed',
           top: 0, left: 0, right: 0, bottom: 0,
           backgroundImage: `
-            linear-gradient(rgba(0, 212, 255, 0.03) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(0, 212, 255, 0.03) 1px, transparent 1px),
-            linear-gradient(rgba(0, 212, 255, 0.015) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(0, 212, 255, 0.015) 1px, transparent 1px)
+            linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px)
           `,
-          backgroundSize: '100px 100px, 100px 100px, 20px 20px, 20px 20px',
+          backgroundSize: '60px 60px',
           pointerEvents: 'none',
           zIndex: 0
         }} />
 
-        {/* Blueprint Corner Marks */}
-        <div style={{ position: 'fixed', top: 20, left: 20, color: demo.farbe, fontSize: 10, opacity: 0.4, fontFamily: '"Space Mono", monospace' }}>A1</div>
-        <div style={{ position: 'fixed', top: 20, right: 20, color: demo.farbe, fontSize: 10, opacity: 0.4, fontFamily: '"Space Mono", monospace' }}>B1</div>
-        <div style={{ position: 'fixed', bottom: 20, left: 20, color: demo.farbe, fontSize: 10, opacity: 0.4, fontFamily: '"Space Mono", monospace' }}>A2</div>
-        <div style={{ position: 'fixed', bottom: 20, right: 20, color: demo.farbe, fontSize: 10, opacity: 0.4, fontFamily: '"Space Mono", monospace' }}>B2</div>
-
         {/* Header */}
         <header style={{
           position: 'relative', zIndex: 1,
-          padding: '60px 40px 40px',
-          borderBottom: `2px dashed ${demo.farbe}`,
+          padding: '80px 40px 60px',
+          borderBottom: `1px solid rgba(255,255,255,0.08)`,
           margin: '40px 40px 0'
         }}>
           <div style={{ display: 'flex', alignItems: 'flex-start', gap: 40 }}>
-            {/* Logo Placeholder */}
+            {/* Logo */}
             <div style={{
-              width: 100, height: 100,
-              border: `2px dashed ${demo.farbe}`,
+              width: 90, height: 90,
+              background: accentColor,
               display: 'flex', alignItems: 'center', justifyContent: 'center',
-              fontSize: 36, fontWeight: 'bold', color: demo.farbe,
-              flexShrink: 0
+              fontSize: 32, fontWeight: '800', color: '#fff',
+              flexShrink: 0, borderRadius: 16
             }}>
-              EH
+              {demo.name.charAt(0)}
             </div>
             <div style={{ flex: 1 }}>
-              <div style={{ fontSize: 10, color: demo.farbe, marginBottom: 8, letterSpacing: 2 }}>TECHNISCHE SPEZIFIKATION // UNTERNEHMENSPROFIL</div>
-              <h1 style={{ fontSize: 36, fontWeight: 700, marginBottom: 8, color: '#fff' }}>{demo.name}</h1>
-              <p style={{ color: demo.farbe, fontSize: 14 }}>{demo.beschreibung}</p>
+              <div style={{ fontSize: 11, color: accentColor, marginBottom: 12, letterSpacing: 3, textTransform: 'uppercase', fontWeight: 600 }}>{demo.branche}</div>
+              <h1 style={{ fontSize: 42, fontWeight: '800', marginBottom: 12, color: '#fff', letterSpacing: '-0.5px' }}>{demo.name}</h1>
+              <p style={{ color: '#a1a1aa', fontSize: 16, lineHeight: 1.6 }}>{demo.beschreibung}</p>
             </div>
           </div>
 
-          {/* Technical Specs Row */}
+          {/* Info Row */}
           <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
-            gap: 20,
+            display: 'flex',
+            gap: 40,
             marginTop: 40,
             paddingTop: 30,
-            borderTop: '1px solid rgba(0,212,255,0.2)'
+            borderTop: '1px solid rgba(255,255,255,0.06)'
           }}>
-            <div>
-              <div style={{ fontSize: 9, color: demo.farbe, marginBottom: 4, letterSpacing: 1 }}>STANDORT</div>
-              <div style={{ fontSize: 13 }}>{demo.anschrift}</div>
-            </div>
+            {demo.anschrift && (
+              <div>
+                <div style={{ fontSize: 10, color: '#71717a', marginBottom: 6, letterSpacing: 2, textTransform: 'uppercase' }}>Adresse</div>
+                <div style={{ fontSize: 14, color: '#e4e4e7' }}>{demo.anschrift}</div>
+              </div>
+            )}
             {demo.telefon && (
               <div>
-                <div style={{ fontSize: 9, color: demo.farbe, marginBottom: 4, letterSpacing: 1 }}>TELEFON</div>
-                <div style={{ fontSize: 13 }}>{demo.telefon}</div>
+                <div style={{ fontSize: 10, color: '#71717a', marginBottom: 6, letterSpacing: 2, textTransform: 'uppercase' }}>Telefon</div>
+                <div style={{ fontSize: 14, color: '#e4e4e7' }}>{demo.telefon}</div>
               </div>
             )}
             {demo.email && (
               <div>
-                <div style={{ fontSize: 9, color: demo.farbe, marginBottom: 4, letterSpacing: 1 }}>E-MAIL</div>
-                <div style={{ fontSize: 13 }}>{demo.email}</div>
+                <div style={{ fontSize: 10, color: '#71717a', marginBottom: 6, letterSpacing: 2, textTransform: 'uppercase' }}>E-Mail</div>
+                <div style={{ fontSize: 14, color: accentColor }}>{demo.email}</div>
               </div>
             )}
-            <div>
-              <div style={{ fontSize: 9, color: demo.farbe, marginBottom: 4, letterSpacing: 1 }}>STATUS</div>
-              <div style={{ fontSize: 13, color: '#00ff88' }}>OPERATIV</div>
-            </div>
           </div>
         </header>
 
-        {/* Services Section */}
+        {/* Services */}
         <section style={{ position: 'relative', zIndex: 1, padding: '60px 40px' }}>
-          <div style={{ fontSize: 10, color: demo.farbe, marginBottom: 20, letterSpacing: 2 }}>LEISTUNGSPROFIL // KERNGESCHAEFTE</div>
+          <div style={{ fontSize: 11, color: '#71717a', marginBottom: 24, letterSpacing: 3, textTransform: 'uppercase', fontWeight: 600 }}>Unsere Leistungen</div>
           <div style={{
-            border: `2px dashed ${demo.farbe}`,
-            padding: 30
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+            gap: 16
           }}>
-            <div style={{ fontSize: 12, color: '#00d4ff', marginBottom: 20 }}>SYSTEM_MAPPING: SERVICES[]</div>
-            <div style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-              gap: 15
-            }}>
-              {demo.usps.map((usp, i) => (
-                <div key={i} style={{
-                  border: `1px solid rgba(0,212,255,0.3)`,
-                  padding: '20px',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: 15,
-                  background: 'rgba(0,212,255,0.02)'
-                }}>
-                  <div style={{
-                    width: 8, height: 8,
-                    border: `2px solid ${demo.farbe}`,
-                    transform: 'rotate(45deg)',
-                    flexShrink: 0
-                  }} />
-                  <span style={{ fontSize: 14 }}>{usp}</span>
-                </div>
-              ))}
-            </div>
+            {demo.usps.map((usp, i) => (
+              <div key={i} style={{
+                background: 'rgba(255,255,255,0.03)',
+                border: '1px solid rgba(255,255,255,0.06)',
+                borderRadius: 12,
+                padding: '24px 28px',
+                display: 'flex',
+                alignItems: 'center',
+                gap: 16
+              }}>
+                <div style={{
+                  width: 8, height: 8,
+                  borderRadius: '50%',
+                  background: accentColor,
+                  flexShrink: 0
+                }} />
+                <span style={{ fontSize: 15, fontWeight: '500', color: '#e4e4e7' }}>{usp}</span>
+              </div>
+            ))}
           </div>
         </section>
 
-        {/* CTA Section */}
+        {/* CTA */}
         <section style={{
           position: 'relative', zIndex: 1,
           padding: '60px 40px',
-          borderTop: `2px dashed ${demo.farbe}`,
-          margin: '0 40px'
+          margin: '0 40px 40px'
         }}>
-          <div style={{ fontSize: 10, color: demo.farbe, marginBottom: 20, letterSpacing: 2 }}>ANFRAGE // KONTAKT</div>
           <div style={{
-            display: 'flex',
-            flexWrap: 'wrap',
-            gap: 20,
-            alignItems: 'center'
+            background: `linear-gradient(135deg, ${accentColor}18 0%, ${accentColor}08 100%)`,
+            border: `1px solid ${accentColor}30`,
+            borderRadius: 20,
+            padding: '48px'
           }}>
+            <h2 style={{ fontSize: 28, fontWeight: '700', marginBottom: 12, color: '#fff' }}>Gefällt Ihnen, was Sie sehen?</h2>
+            <p style={{ color: '#a1a1aa', marginBottom: 32, fontSize: 16 }}>Wir bauen fuer Sie eine professionelle Website – modern, mobil-optimiert und genau auf Ihr Unternehmen zugeschnitten.</p>
             <a href="https://vexaro.design" style={{
               display: 'inline-block',
-              background: demo.farbe,
-              color: '#0a1628',
-              padding: '16px 40px',
-              fontSize: 14,
-              fontWeight: 700,
+              background: accentColor,
+              color: '#fff',
+              padding: '16px 36px',
+              fontSize: 15,
+              fontWeight: '700',
               textDecoration: 'none',
-              fontFamily: '"Space Mono", monospace'
+              borderRadius: 10
             }}>
-              ANGEBOT ANFORDERN →
+              Kostenlose Beratung anfragen
             </a>
-            <div style={{ fontSize: 12, color: '#607080' }}>
-              Vexaro Studio — Webentwicklung fuer Handwerk & Mittelstand
-            </div>
           </div>
         </section>
 
@@ -235,14 +217,14 @@ export default async function DemoPage({ params }: PageProps) {
         <footer style={{
           position: 'relative', zIndex: 1,
           padding: '30px 40px',
-          marginTop: 40,
-          borderTop: `1px solid rgba(0,212,255,0.2)`,
-          fontSize: 11,
-          color: '#405060'
+          marginTop: 20,
+          borderTop: '1px solid rgba(255,255,255,0.05)',
+          fontSize: 12,
+          color: '#52525b'
         }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-            <span>DEMO_BUILD: vexaro-demo // ROUTE: /{slug}</span>
-            <a href="https://vexaro.design" style={{ color: demo.farbe }}>Vexaro Studio</a>
+            <span>Website demo erstellt von Vexaro Studio</span>
+            <a href="https://vexaro.design" style={{ color: accentColor }}>vexaro.design</a>
           </div>
         </footer>
       </div>
